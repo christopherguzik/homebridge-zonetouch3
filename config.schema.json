@@ -34,12 +34,7 @@
           "type": "object",
           "properties": {
             "id": { "title": "Zone index (0-based)", "type": "integer" },
-            "name": { "title": "Zone name", "type": "string" },
-            "onPercent": {
-              "title": "Open percentage when switched on",
-              "type": "integer",
-              "default": 100
-            }
+            "name": { "title": "Zone name", "type": "string" }
           }
         }
       }

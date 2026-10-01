@@ -1,7 +1,8 @@
 # homebridge-zonetouch3
 
 A Homebridge plugin for the Polyaire **ZoneTouch 3**. Each configured zone
-shows up in HomeKit as a Switch.
+shows up in HomeKit as an adjustable Window Covering, with its position mapped
+to the zone damper percentage.
 
 ## Status: real, working protocol
 
@@ -12,12 +13,10 @@ the Home Assistant community (see the "ZoneTouch 3 by Polyaire" thread on
 community.home-assistant.io); this plugin ports that protocol directly.
 
 Supported:
-- Turning a zone on (to a configurable open %, default 100) or off
+- Setting each zone damper from 0% (closed) to 100% (fully open)
 - Polling zone state and temperature every `pollIntervalSeconds` (default 30s)
 
-Not implemented yet (the protocol has no obvious blocker, just not wired
-up): exposing zone open-percentage as a HomeKit dimmer instead of a plain
-switch, and exposing the temperature sensor as a HomeKit accessory.
+The temperature sensor is not exposed as a HomeKit accessory.
 
 ## Install
 
@@ -37,8 +36,8 @@ built-in `net` module).
       "port": 7030,
       "pollIntervalSeconds": 30,
       "zones": [
-        { "id": 0, "name": "Living Room", "onPercent": 100 },
-        { "id": 1, "name": "Bedroom", "onPercent": 80 }
+        { "id": 0, "name": "Living Room" },
+        { "id": 1, "name": "Bedroom" }
       ]
     }
   ]
@@ -51,8 +50,7 @@ built-in `net` module).
   doesn't respond, this is the first thing worth double-checking.
 - `zones[].id`: zone index starting at 0, in the same order they appear in
   the ZoneTouch app.
-- `zones[].onPercent`: how far open the zone damper goes when switched on
-  in HomeKit (the app calls this separately from "on/off").
+- Each zone's HomeKit position control sets the damper opening percentage.
 
 ## A couple of protocol quirks worth knowing
 
