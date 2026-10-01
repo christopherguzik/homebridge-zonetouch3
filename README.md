@@ -1,8 +1,8 @@
 # homebridge-zonetouch3
 
 A Homebridge plugin for the Polyaire **ZoneTouch 3**. Each configured zone
-shows up in HomeKit as an adjustable Window Covering, with its position mapped
-to the zone damper percentage.
+shows up in HomeKit as a Fan with an adjustable speed percentage mapped to the
+zone damper opening.
 
 ## Status: real, working protocol
 
@@ -13,7 +13,8 @@ the Home Assistant community (see the "ZoneTouch 3 by Polyaire" thread on
 community.home-assistant.io); this plugin ports that protocol directly.
 
 Supported:
-- Setting each zone damper from 0% (closed) to 100% (fully open)
+- Turning each zone on or off from its HomeKit fan control
+- Setting each zone damper from 0% (closed) to 100% (fully open) using fan speed
 - Polling zone state and temperature every `pollIntervalSeconds` (default 30s)
 
 The temperature sensor is not exposed as a HomeKit accessory.
@@ -50,7 +51,8 @@ built-in `net` module).
   doesn't respond, this is the first thing worth double-checking.
 - `zones[].id`: zone index starting at 0, in the same order they appear in
   the ZoneTouch app.
-- Each zone's HomeKit position control sets the damper opening percentage.
+- Each zone's HomeKit fan speed sets the damper opening percentage. Turning a
+  zone off closes its damper; turning it on restores the last non-zero speed.
 
 ## A couple of protocol quirks worth knowing
 
@@ -64,6 +66,6 @@ built-in `net` module).
 
 - `index.js` — registers the platform with Homebridge.
 - `lib/platform.js` — reads config, creates one accessory per zone.
-- `lib/zoneAccessory.js` — exposes a zone as a HomeKit Switch.
+- `lib/zoneAccessory.js` — exposes a zone as a HomeKit Fan with percentage speed.
 - `lib/zonetouchClient.js` — the TCP connection and the actual ZoneTouch
   3 binary protocol (message building, CRC16, response parsing).

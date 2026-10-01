@@ -1,6 +1,6 @@
 {
   "name": "homebridge-zonetouch3",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Homebridge plugin for Polyaire ZoneTouch 3 AC zone control",
   "repository": {
     "type": "git",
