@@ -1,0 +1,48 @@
+{
+  "pluginAlias": "ZoneTouch3",
+  "pluginType": "platform",
+  "singular": true,
+  "schema": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "title": "Name",
+        "type": "string",
+        "default": "ZoneTouch AC"
+      },
+      "ip": {
+        "title": "ZoneTouch 3 IP address",
+        "type": "string",
+        "required": true,
+        "placeholder": "192.168.1.50"
+      },
+      "port": {
+        "title": "TCP port",
+        "type": "integer",
+        "default": 7030,
+        "description": "7030 is the port confirmed by the Home Assistant community reverse-engineering thread."
+      },
+      "pollIntervalSeconds": {
+        "title": "Status poll interval (seconds)",
+        "type": "integer",
+        "default": 30
+      },
+      "zones": {
+        "title": "Zones",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": { "title": "Zone index (0-based)", "type": "integer" },
+            "name": { "title": "Zone name", "type": "string" },
+            "onPercent": {
+              "title": "Open percentage when switched on",
+              "type": "integer",
+              "default": 100
+            }
+          }
+        }
+      }
+    }
+  }
+}

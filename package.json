@@ -1,0 +1,20 @@
+{
+  "name": "homebridge-zonetouch3",
+  "version": "0.1.0",
+  "description": "Homebridge plugin for Polyaire ZoneTouch 3 AC zone control",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/christopherguzik/homebridge-zonetouch3.git"
+  },
+  "homepage": "https://github.com/christopherguzik/homebridge-zonetouch3#readme",
+  "bugs": {
+    "url": "https://github.com/christopherguzik/homebridge-zonetouch3/issues"
+  },
+  "main": "index.js",
+  "keywords": ["homebridge-plugin"],
+  "engines": {
+    "homebridge": ">=1.6.0",
+    "node": ">=16.0.0"
+  },
+  "dependencies": {}
+}
